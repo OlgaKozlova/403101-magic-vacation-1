@@ -12,6 +12,10 @@
 
 }
 
+body.active .social-block__toggler::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
 .social-block__toggler {
   @include btn-reset;
   position: relative;
@@ -21,7 +25,7 @@
   color: $c-dark;
   border-radius: 50%;
   transition: color 0.3s;
-
+  
   @media (max-width: $tablet) and (orientation: portrait) {
     display: none;
   }
@@ -39,8 +43,8 @@
     background-color: $c-light;
     border: 2px solid $c-light;
     z-index: -1;
-    transition-property: width height border background-color;
-    transition-duration: 0.3s
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s cubic-bezier(.35,.38,0,1.62) 0.4s, height 0.3s, width 0.3s, border 0.3s, background-color 0.3s;
   }
 
   svg {

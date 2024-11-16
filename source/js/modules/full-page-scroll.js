@@ -7,6 +7,7 @@ export default class FullPageScroll {
     this.timeout = null;
 
     this.screenElements = document.querySelectorAll(`.screen:not(.screen--result)`);
+    this.bodyElement = document.getElementsByTagName(`body`)[0];
     this.menuElements = document.querySelectorAll(`.page-header__menu .js-menu-link`);
 
     this.activeScreen = 0;
@@ -52,6 +53,9 @@ export default class FullPageScroll {
   }
 
   changeVisibilityDisplay() {
+    if (this.bodyElement) {
+      this.bodyElement.classList.remove(`active`);
+    }
     this.screenElements.forEach((screen) => {
       screen.classList.add(`screen--hidden`);
       screen.classList.remove(`active`);
@@ -59,6 +63,9 @@ export default class FullPageScroll {
     this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
     setTimeout(() => {
       this.screenElements[this.activeScreen].classList.add(`active`);
+      if (this.bodyElement) {
+        this.bodyElement.classList.add(`active`);
+      }
     }, 100);
   }
 
