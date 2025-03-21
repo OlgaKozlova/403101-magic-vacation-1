@@ -364,3 +364,21 @@ body.active .screen__footer {
 .screen--rules {
   background-color: $c-dark;
 }
+
+.screen-background {
+  width: 100vw;
+  background-color: rgb(95, 69, 140);
+  position: fixed;
+  bottom: 0;
+  z-index: 2;
+}
+
+.screen-background.screen-background--hidden {
+  height: 0;
+  transition: none;
+}
+
+.screen-background.screen-background--visible {
+  height: 100vh;
+  transition: height 0.3s;
+}
